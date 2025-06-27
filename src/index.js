@@ -1,23 +1,43 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 //import { getAnalytics } from "firebase/analytics";
-import { getAuth } from "firebase/auth";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
+
   apiKey: "AIzaSyDi3jkVvltaxKJbxbWt2SlwTum_dOk30rI",
+
   authDomain: "reno-checker.firebaseapp.com",
+
   projectId: "reno-checker",
+
   storageBucket: "reno-checker.firebasestorage.app",
+
   messagingSenderId: "852244918302",
+
   appId: "1:852244918302:web:fddd0f25909a8f8075be0f",
+
   measurementId: "G-78K0GETCGT"
+
 };
+
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 //const analytics = getAnalytics(app);
 const auth = getAuth(app)
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    // User is signed in, see docs for a list of available properties
+    // https://firebase.google.com/docs/reference/js/firebase.User
+    const uid = user.uid;
+    console.log("User is signed in with UID:", uid);
+  } else {
+    // User is signed out
+    console.log("No user is signed in.");
+  }
+});
