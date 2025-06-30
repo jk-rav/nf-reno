@@ -3,6 +3,7 @@ import { initializeApp } from "firebase/app";
 //import { getAnalytics } from "firebase/analytics";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { collection, doc, getDocs, getFirestore } from "firebase/firestore";
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -23,10 +24,10 @@ const app = initializeApp(firebaseConfig);
 //const analytics = getAnalytics(app);
 const auth = getAuth(app)
 const db = getFirestore(app)
-const testCol = collection(db, 'users')
+/*const testCol = collection(db, 'users')
 const snapshot = await getDocs(testCol)
 const jDoe = doc(db, 'users', 'johndoe')
-console.log(jDoe)
+console.log(jDoe)*/
 onAuthStateChanged(auth, (user) => {
   if (user) {
     // User is signed in, see docs for a list of available properties
