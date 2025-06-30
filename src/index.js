@@ -42,6 +42,7 @@ onAuthStateChanged(auth, (user) => {
     console.log("No user is signed in.");
   }
 });
+console.log("testing auth")
 signInWithPopup(auth, provider)
   .then((result) => {
     // This gives you a Google Access Token. You can use it to access the Google API.
