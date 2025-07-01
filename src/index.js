@@ -5,7 +5,7 @@ import { getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithPopup, signO
 import { collection, doc, getDocs, getFirestore, addDoc } from "firebase/firestore";
 
 
-import { myTestConst } from "./auth";
+import { myTestConst, logInBtn, logOutBtn } from "./auth";
 console.log("testValue = " + myTestConst)
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -29,10 +29,7 @@ const auth = getAuth(app)
 const provider = new GoogleAuthProvider();
 
 const db = getFirestore(app)
-/*const testCol = collection(db, 'users')
-const snapshot = await getDocs(testCol)
-const jDoe = doc(db, 'users', 'johndoe')
-console.log(jDoe)*/
+
 onAuthStateChanged(auth, (user) => {
   if (user) {
     // User is signed in, see docs for a list of available properties
@@ -48,23 +45,12 @@ onAuthStateChanged(auth, (user) => {
     console.log("  Photo URL: " + profile.photoURL);
     myUser=profile.email
     });
-
-    /*if(myUser != "knudsen.jan@gmail.com"){
-      signOut(auth).then(() => {
-        console.log("invalid user... signing out")
-    }).catch((error) => {
-        console.log("invalid user, unable to sign out, " & error.message)
-
-  });
-    } else {
-      console.log("signed in")
-    }*/
-
   } else {
     // User is signed out
     console.log("No user is signed in.");
   }
 });
+
 console.log("testing auth")
 //function btnTest(){console.log("Testing Btn")}
 
@@ -74,35 +60,7 @@ document.getElementById('logOutBtn').addEventListener('click', logOutBtn);
 document.getElementById('testStore').addEventListener('click', testStore);
 
 
-function logInBtn() {
-signInWithPopup(auth, provider)
-  .then((result) => {
-    // This gives you a Google Access Token. You can use it to access the Google API.
-    const credential = GoogleAuthProvider.credentialFromResult(result);
-    const token = credential.accessToken;
-    // The signed-in user info.
-    const user = result.user;
-    // IdP data available using getAdditionalUserInfo(result)
-    // ...
-  }).catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    console.log(errorMessage)
-    // The email of the user's account used.
-    const email = error.customData.email;
-    // The AuthCredential type that was used.
-    const credential = GoogleAuthProvider.credentialFromError(error);
-    // ...
-  });
-}
 
-function logOutBtn(){
-signOut(auth).then(() => {
-  // Sign-out successful.
-}).catch((error) => {
-  // An error happened.
-});
-}
 
 async function testStore(){
   console.log("testing Store...")
