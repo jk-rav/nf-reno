@@ -5,8 +5,6 @@ import { getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithPopup, signO
 import { collection, doc, getDocs, getFirestore, addDoc } from "firebase/firestore";
 
 
-import { myTestConst, logInBtn, logOutBtn, setObserver } from "./auth";
-console.log("testValue = " + myTestConst)
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
