@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 //import { getAnalytics } from "firebase/analytics";
-import { getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithPopup } from "firebase/auth";
+import { getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithPopup, signOut } from "firebase/auth";
 import { collection, doc, getDocs, getFirestore } from "firebase/firestore";
 
 
@@ -37,12 +37,25 @@ onAuthStateChanged(auth, (user) => {
     // https://firebase.google.com/docs/reference/js/firebase.User
     const uid = user.uid;
     console.log("User is signed in with UID:", uid);
+    user.providerData.forEach((profile) => {
+    console.log("Sign-in provider: " + profile.providerId);
+    console.log("  Provider-specific UID: " + profile.uid);
+    console.log("  Name: " + profile.displayName);
+    console.log("  Email: " + profile.email);
+    console.log("  Photo URL: " + profile.photoURL);
+  });
   } else {
     // User is signed out
     console.log("No user is signed in.");
   }
 });
 console.log("testing auth")
+//function btnTest(){console.log("Testing Btn")}
+
+
+document.getElementById('logInBtn').addEventListener('click', logInBtn);
+document.getElementById('logOutBtn').addEventListener('click', logOutBtn);
+
 
 function logInBtn() {
 signInWithPopup(auth, provider)
@@ -65,3 +78,14 @@ signInWithPopup(auth, provider)
     // ...
   });
 }
+
+function logOutBtn(){
+signOut(auth).then(() => {
+  // Sign-out successful.
+}).catch((error) => {
+  // An error happened.
+});
+}
+
+
+function testInModule(){console.log("test complete")}
