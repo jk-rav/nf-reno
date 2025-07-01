@@ -37,13 +37,27 @@ onAuthStateChanged(auth, (user) => {
     // https://firebase.google.com/docs/reference/js/firebase.User
     const uid = user.uid;
     console.log("User is signed in with UID:", uid);
+    let myUser = ""
     user.providerData.forEach((profile) => {
     console.log("Sign-in provider: " + profile.providerId);
     console.log("  Provider-specific UID: " + profile.uid);
     console.log("  Name: " + profile.displayName);
     console.log("  Email: " + profile.email);
     console.log("  Photo URL: " + profile.photoURL);
+    myUser=profile.email
+    });
+
+    /*if(myUser != "knudsen.jan@gmail.com"){
+      signOut(auth).then(() => {
+        console.log("invalid user... signing out")
+    }).catch((error) => {
+        console.log("invalid user, unable to sign out, " & error.message)
+
   });
+    } else {
+      console.log("signed in")
+    }*/
+
   } else {
     // User is signed out
     console.log("No user is signed in.");
@@ -55,6 +69,7 @@ console.log("testing auth")
 
 document.getElementById('logInBtn').addEventListener('click', logInBtn);
 document.getElementById('logOutBtn').addEventListener('click', logOutBtn);
+document.getElementById('testStore').addEventListener('click', testStore);
 
 
 function logInBtn() {
@@ -87,5 +102,19 @@ signOut(auth).then(() => {
 });
 }
 
+
+
+async function testStore(){
+  try {
+  const docRef = await addDoc(collection(db, "users"), {
+    first: "Ada",
+    last: "Lovelace",
+    born: 1815
+  });
+  console.log("Document written with ID: ", docRef.id);
+} catch (e) {
+  console.error("Error adding document: ", e);
+}
+}
 
 function testInModule(){console.log("test complete")}
