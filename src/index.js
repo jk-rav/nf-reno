@@ -43,6 +43,7 @@ onAuthStateChanged(auth, (user) => {
   }
 });
 console.log("testing auth")
+
 function logInBtn() {
 signInWithPopup(auth, provider)
   .then((result) => {
