@@ -2,9 +2,11 @@
 import { initializeApp } from "firebase/app";
 //import { getAnalytics } from "firebase/analytics";
 import { getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithPopup, signOut } from "firebase/auth";
-import { collection, doc, getDocs, getFirestore } from "firebase/firestore";
+import { collection, doc, getDocs, getFirestore, addDoc } from "firebase/firestore";
 
 
+import { myTestConst } from "./auth";
+console.log("testValue = " + myTestConst)
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -102,9 +104,8 @@ signOut(auth).then(() => {
 });
 }
 
-
-
 async function testStore(){
+  console.log("testing Store...")
   try {
   const docRef = await addDoc(collection(db, "users"), {
     first: "Ada",
