@@ -9,6 +9,7 @@
       import {name} from "https://jk-rav.github.io/modules/test.mjs"
       console.log(name)
       console.log("v16.03 test")
+      function btnTest(){console.log("Testing Btn")}
     </script>
 <!--
     <script defer src="/__/firebase/11.9.1/firebase-app-compat.js"></script>
@@ -37,16 +38,16 @@
         body { border-top: 16px solid #ffa100; }
       }
     </style>
-  </head>
+  </head> -->
   <body>
     <div id="message">
       <h2>Welcome</h2>
       <h1>Hosting Setup Complete</h1>
       <p>Build succesful</p>
-      <a target="_blank" href="https://firebase.google.com/docs/hosting/">Open Hosting Documentation</a>
+      <button type="button" onclick="btnTest()" >Test</button>
     </div>
     <p id="load">Firebase SDK Loading&hellip;</p>
-
+<!--
     <script>
       document.addEventListener('DOMContentLoaded', function() {
         const loadEl = document.querySelector('#load');
