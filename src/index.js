@@ -5,7 +5,7 @@ import { getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithPopup, signO
 import { collection, doc, getDocs, getFirestore, addDoc } from "firebase/firestore";
 
 
-import { myTestConst, logInBtn, logOutBtn } from "./auth";
+import { myTestConst, logInBtn, logOutBtn, setObserver } from "./auth";
 console.log("testValue = " + myTestConst)
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -30,26 +30,7 @@ const provider = new GoogleAuthProvider();
 
 const db = getFirestore(app)
 
-onAuthStateChanged(auth, (user) => {
-  if (user) {
-    // User is signed in, see docs for a list of available properties
-    // https://firebase.google.com/docs/reference/js/firebase.User
-    const uid = user.uid;
-    console.log("User is signed in with UID:", uid);
-    let myUser = ""
-    user.providerData.forEach((profile) => {
-    console.log("Sign-in provider: " + profile.providerId);
-    console.log("  Provider-specific UID: " + profile.uid);
-    console.log("  Name: " + profile.displayName);
-    console.log("  Email: " + profile.email);
-    console.log("  Photo URL: " + profile.photoURL);
-    myUser=profile.email
-    });
-  } else {
-    // User is signed out
-    console.log("No user is signed in.");
-  }
-});
+
 
 console.log("testing auth")
 //function btnTest(){console.log("Testing Btn")}
@@ -60,7 +41,7 @@ document.getElementById('logOutBtn').addEventListener('click', logOutBtn);
 document.getElementById('testStore').addEventListener('click', testStore);
 
 
-
+setObserver();
 
 async function testStore(){
   console.log("testing Store...")
