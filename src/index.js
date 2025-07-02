@@ -3,6 +3,7 @@ import { initializeApp } from "firebase/app";
 //import { getAnalytics } from "firebase/analytics";
 import { getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithPopup, signOut } from "firebase/auth";
 import { collection, doc, getDocs, getFirestore, addDoc } from "firebase/firestore";
+import { geoTest, geoTestStart } from "./geoloc.js"
 
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -91,6 +92,8 @@ console.log("testing auth")
 document.getElementById('logInBtn').addEventListener('click', logInBtn);
 document.getElementById('logOutBtn').addEventListener('click', logOutBtn);
 document.getElementById('testStore').addEventListener('click', testStore);
+document.getElementById('geoTest').addEventListener('click', geoTest);
+document.getElementById('geoTestStart').addEventListener('click', geoTestStart);
 
 
 setObserver();
