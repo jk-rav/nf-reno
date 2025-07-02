@@ -44,7 +44,7 @@ export function getLocation() {
 function regPosition(position) {
     var latlon = position.coords.latitude + "," + position.coords.longitude;
     console.log("test"+latlon)
-    allCoords.push([position.latitude, position.longitude])
+    allCoords.push([position.coords.latitude, position.coords.longitude])
     printCoords();
     //var img_url = "https://www.google.com/maps/search/?api=1&query=55.0%2C10.0";id="coordbox"
     //document.getElementById("mapFrame").src=base_url+"&center="+latlon+"&zoom=18";
