@@ -3,8 +3,7 @@ const api_key = "AIzaSyAskW7ySpDl-QepAhesYZaLn1NLR1ySC34"
 const base_url = "https://www.google.com/maps/embed/v1/view?key="+api_key//+"&q="+latlon
 var allCoords=[];
 
-document.getElementById('geoTest').addEventListener('click', geoTest);
-document.getElementById('geoTestStart').addEventListener('click', geoTestStart);
+
 
 function geoTest(){
     getLocation()
@@ -65,4 +64,9 @@ function showError(error) {
             x.innerHTML = "An unknown error occurred."
             break;
     }
+}
+
+document.onload=function(){
+document.getElementById('geoTest').addEventListener('click', geoTest);
+document.getElementById('geoTestStart').addEventListener('click', geoTestStart);
 }
