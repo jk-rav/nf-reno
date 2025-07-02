@@ -85,6 +85,10 @@ onAuthStateChanged(auth, (user) => {
 });
 }
 
+function dateTimeTest(){
+  myDate = Date()
+  console.log("DateString: " + myDate.getFullYear() + (myDate.getMonth()+1) + myDate.getDate())
+}
 console.log("testing auth")
 //function btnTest(){console.log("Testing Btn")}
 
@@ -95,8 +99,9 @@ document.getElementById('testStore').addEventListener('click', testStore);
 document.getElementById('geoTest').addEventListener('click', geoTest);
 document.getElementById('geoTestStart').addEventListener('click', geoTestStart);
 
-
+dateTimeTest();
 setObserver();
+
 
 async function testStore(){
   console.log("testing Store...")
@@ -110,6 +115,10 @@ async function testStore(){
 } catch (e) {
   console.error("Error adding document: ", e);
 }
+}
+
+async function uploadLoc(){
+
 }
 
 function testInModule(){console.log("test complete")}
