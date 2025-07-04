@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-
-    "build": "git commit -am \"update\" && git push origin \"main\" && webpack --mode=development && firebase deploy --only hosting:reno-checker"
+    "build": "webpack --mode=development && firebase deploy --only hosting:reno-checker",
+    "gitnbuild": "git commit -am \"update\" && git push origin \"main\" && webpack --mode=development && firebase deploy --only hosting:reno-checker"
 
   },
   "repository": {
